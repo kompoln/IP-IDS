@@ -1,0 +1,58 @@
+[
+    {
+        "id": "SIG001",
+        "name": "SQL Injection Attack",
+        "description": "Attempt to execute SQL command via web request",
+        "pattern": "SELECT.*FROM.*WHERE",
+        "protocol": "TCP",
+        "port": "80",
+        "type": "Injection",
+        "severity": "High",
+        "references": [
+            "https://owasp.org/www-community/attacks/SQL_Injection",
+            "CVE-201X-XXXX"
+        ]
+    },
+    {
+        "id": "SIG002",
+        "name": "XSS Attack",
+        "description": "Cross-site scripting attack detected",
+        "pattern": "<script>.*</script>",
+        "protocol": "TCP",
+        "port": "80",
+        "type": "Cross-Site Scripting",
+        "severity": "Medium",
+        "references": [
+            "https://owasp.org/www-community/attacks/xss/",
+            "CVE-201X-YYYY"
+        ]
+    },
+    {
+        "id": "SIG003",
+        "name": "Port Scan",
+        "description": "Suspicious activity indicating a port scan",
+        "pattern": null,
+        "protocol": "TCP",
+        "port": null,
+        "type": "Reconnaissance",
+        "severity": "Low",
+        "references": [
+            "https://nmap.org/",
+            "CVE-201X-ZZZZ"
+        ]
+    },
+    {
+        "id": "SIG004",
+        "name": "DDoS Attack",
+        "description": "Potential Distributed Denial of Service attack",
+        "pattern": null,
+        "protocol": "UDP",
+        "port": null,
+        "type": "Denial of Service",
+        "severity": "Critical",
+        "references": [
+            "https://www.us-cert.gov/ncas/tips/ST04-015",
+            "CVE-201X-WWWW"
+        ]
+    }
+]
