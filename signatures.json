@@ -9,8 +9,7 @@
         "type": "Injection",
         "severity": "High",
         "references": [
-            "https://owasp.org/www-community/attacks/SQL_Injection",
-            "CVE-201X-XXXX"
+            "https://owasp.org/www-community/attacks/SQL_Injection"
         ]
     },
     {
@@ -23,8 +22,7 @@
         "type": "Cross-Site Scripting",
         "severity": "Medium",
         "references": [
-            "https://owasp.org/www-community/attacks/xss/",
-            "CVE-201X-YYYY"
+            "https://owasp.org/www-community/attacks/xss/"
         ]
     },
     {
@@ -37,8 +35,7 @@
         "type": "Traversal",
         "severity": "Medium",
         "references": [
-            "https://owasp.org/www-community/attacks/Path_Traversal",
-            "CVE-201X-ABCD"
+            "https://owasp.org/www-community/attacks/Path_Traversal"
         ]
     },
     {
@@ -51,8 +48,7 @@
         "type": "Malware",
         "severity": "High",
         "references": [
-            "https://www.us-cert.gov/Malware",
-            "CVE-201X-EFGH"
+            "https://www.us-cert.gov/Malware"
         ]
     },
     {
@@ -70,29 +66,29 @@
         ]
     },
     {
-        "id": "SIG008",
-        "name": "ICMP Echo Request (Ping)",
-        "description": "Detection of ICMP Echo Request which is commonly used by the 'ping' command",
-        "pattern": null,
-        "protocol": "ICMP",
-        "port": null,
-        "type": "Reconnaissance",
-        "severity": "Low",
+        "id": "SIG007",
+        "name": "HTTP Flood Attack",
+        "description": "High volume of HTTP requests that may indicate a flood attack",
+        "pattern": "", 
+        "protocol": "TCP",
+        "port": "80",
+        "type": "DDoS",
+        "severity": "High",
         "references": [
-            "https://en.wikipedia.org/wiki/Ping_(networking_utility)"
+            "https://owasp.org/www-community/attacks/HTTP_Flood"
         ]
     },
-    {        
+    {
         "id": "SIG009",
-        "name": "Nmap Scan",
-        "description": "Detection of nmap port scan activity",
-        "pattern": null,
+        "name": "MitM Attack",
+        "description": "Detection of unusual SSL/TLS certificates or other signs that may indicate a Man-in-the-Middle attack",
+        "pattern": "",
         "protocol": "TCP",
-        "port": null,
-        "type": "Reconnaissance",
-       "severity": "Medium",
+        "port": "443",
+        "type": "MitM",
+        "severity": "High",
         "references": [
-        "https://nmap.org/book/man-port-scanning-techniques.html"
-    ]
+            "https://owasp.org/www-community/attacks/Man-in-the-middle_attack"
+        ]
     }
 ]
