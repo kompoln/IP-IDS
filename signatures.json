@@ -3,7 +3,7 @@
         "id": "SIG001",
         "name": "SQL Injection Attack",
         "description": "Attempt to execute SQL command via web request",
-        "pattern": "SELECT.*FROM.*WHERE",
+        "pattern": "(SELECT|INSERT|DELETE|UPDATE|DROP|EXEC)\\s+.*\\s+FROM\\s+.*\\s+WHERE",
         "protocol": "TCP",
         "port": "80",
         "type": "Injection",
@@ -17,7 +17,7 @@
         "id": "SIG002",
         "name": "XSS Attack",
         "description": "Cross-site scripting attack detected",
-        "pattern": "<script>.*</script>",
+        "pattern": "<script[^>]*>(.*?)</script>",
         "protocol": "TCP",
         "port": "80",
         "type": "Cross-Site Scripting",
@@ -29,30 +29,70 @@
     },
     {
         "id": "SIG003",
-        "name": "Port Scan",
-        "description": "Suspicious activity indicating a port scan",
-        "pattern": null,
+        "name": "Directory Traversal",
+        "description": "Path traversal attack aiming to access files and directories that are stored outside the web root folder",
+        "pattern": "\\.{2}/",
         "protocol": "TCP",
-        "port": null,
-        "type": "Reconnaissance",
-        "severity": "Low",
+        "port": "80",
+        "type": "Traversal",
+        "severity": "Medium",
         "references": [
-            "https://nmap.org/",
-            "CVE-201X-ZZZZ"
+            "https://owasp.org/www-community/attacks/Path_Traversal",
+            "CVE-201X-ABCD"
         ]
     },
     {
         "id": "SIG004",
-        "name": "DDoS Attack",
-        "description": "Potential Distributed Denial of Service attack",
-        "pattern": null,
-        "protocol": "UDP",
-        "port": null,
-        "type": "Denial of Service",
+        "name": "Malware Activity",
+        "description": "Detected potential malware communication based on traffic patterns",
+        "pattern": ".*malware.*",
+        "protocol": "TCP",
+        "port": "443",
+        "type": "Malware",
+        "severity": "High",
+        "references": [
+            "https://www.us-cert.gov/Malware",
+            "CVE-201X-EFGH"
+        ]
+    },
+    {
+        "id": "SIG005",
+        "name": "Heartbleed Vulnerability",
+        "description": "Possible exploitation of the Heartbleed vulnerability",
+        "pattern": "\\x18\\x03\\x02\\x00\\x03\\x01.*\\x40\\x00",
+        "protocol": "TCP",
+        "port": "443",
+        "type": "Vulnerability",
         "severity": "Critical",
         "references": [
-            "https://www.us-cert.gov/ncas/tips/ST04-015",
-            "CVE-201X-WWWW"
+            "https://heartbleed.com/",
+            "CVE-2014-0160"
         ]
+    },
+    {
+        "id": "SIG008",
+        "name": "ICMP Echo Request (Ping)",
+        "description": "Detection of ICMP Echo Request which is commonly used by the 'ping' command",
+        "pattern": null,
+        "protocol": "ICMP",
+        "port": null,
+        "type": "Reconnaissance",
+        "severity": "Low",
+        "references": [
+            "https://en.wikipedia.org/wiki/Ping_(networking_utility)"
+        ]
+    },
+    {        
+        "id": "SIG009",
+        "name": "Nmap Scan",
+        "description": "Detection of nmap port scan activity",
+        "pattern": null,
+        "protocol": "TCP",
+        "port": null,
+        "type": "Reconnaissance",
+       "severity": "Medium",
+        "references": [
+        "https://nmap.org/book/man-port-scanning-techniques.html"
+    ]
     }
 ]
