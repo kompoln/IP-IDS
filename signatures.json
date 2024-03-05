@@ -45,6 +45,7 @@
         "pattern": ".*malware.*",
         "protocol": "TCP",
         "port": "443",
+        
         "type": "Malware",
         "severity": "High",
         "references": [
@@ -63,32 +64,6 @@
         "references": [
             "https://heartbleed.com/",
             "CVE-2014-0160"
-        ]
-    },
-    {
-        "id": "SIG007",
-        "name": "HTTP Flood Attack",
-        "description": "High volume of HTTP requests that may indicate a flood attack",
-        "pattern": "", 
-        "protocol": "TCP",
-        "port": "80",
-        "type": "DDoS",
-        "severity": "High",
-        "references": [
-            "https://owasp.org/www-community/attacks/HTTP_Flood"
-        ]
-    },
-    {
-        "id": "SIG009",
-        "name": "MitM Attack",
-        "description": "Detection of unusual SSL/TLS certificates or other signs that may indicate a Man-in-the-Middle attack",
-        "pattern": "",
-        "protocol": "TCP",
-        "port": "443",
-        "type": "MitM",
-        "severity": "High",
-        "references": [
-            "https://owasp.org/www-community/attacks/Man-in-the-middle_attack"
         ]
     }
 ]
