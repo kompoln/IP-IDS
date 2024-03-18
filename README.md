@@ -28,7 +28,7 @@ python main.py [-i INTERFACE] [-f FILTER]
 To stop the IDS, simply press q and Enter, or use Ctrl+C.
 
 ## Requirements
-- Python 3.x
+- Python 3.11.x
 - Scapy
 - Psutil
   
