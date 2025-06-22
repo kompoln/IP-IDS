@@ -119,19 +119,19 @@ class TrafficAnalyzer:
                 protocol = signature['protocol']
                 port = int(signature['port'])
 
-        # Проверяем TCP или UDP пакеты на соответствие порту из сигнатуры
-        if (protocol == 'TCP' and TCP in packet and packet[TCP].dport == port) or \
-           (protocol == 'UDP' and UDP in packet and packet[UDP].dport == port):
-            payload = None
-            # Извлекаем полезную нагрузку пакета для дальнейшего анализа
-            if protocol == 'TCP' and TCP in packet and 'load' in packet[TCP]:
-                payload = packet[TCP].load
-            elif protocol == 'UDP' and UDP in packet and 'load' in packet[UDP]:
-                payload = packet[UDP].load
+                # Проверяем TCP или UDP пакеты на соответствие порту из сигнатуры
+                if (protocol == 'TCP' and TCP in packet and packet[TCP].dport == port) or \
+                   (protocol == 'UDP' and UDP in packet and packet[UDP].dport == port):
+                    payload = None
+                    # Извлекаем полезную нагрузку пакета для дальнейшего анализа
+                    if protocol == 'TCP' and TCP in packet and 'load' in packet[TCP]:
+                        payload = packet[TCP].load
+                    elif protocol == 'UDP' and UDP in packet and 'load' in packet[UDP]:
+                        payload = packet[UDP].load
 
-            # Если в полезной нагрузке обнаружен паттерн из сигнатуры, регистрируем предупреждение
-            if payload and re.search(signature['pattern'], payload.decode('utf-8', errors='ignore')):
-                self.logger.warning(f"{signature['name']} from {src_ip}: {signature['description']}")
+                    # Если в полезной нагрузке обнаружен паттерн из сигнатуры, регистрируем предупреждение
+                    if payload and re.search(signature['pattern'], payload.decode('utf-8', errors='ignore')):
+                        self.logger.warning(f"{signature['name']} from {src_ip}: {signature['description']}")
         
     def detect_port_scan(self, packet, src_ip):
         # Получаем текущее время для отметки времени пакета
